@@ -30,3 +30,10 @@ def RPS(user):
 def toss():
     outcomes = ['Heads', 'Tails']
     return random.choice(outcomes)
+
+'''
+change this to another controller
+'''
+def getAnswer(q, alfred):
+    if 'toss' in q.lower():
+        return toss()
