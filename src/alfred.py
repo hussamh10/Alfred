@@ -30,4 +30,4 @@ class Alfred():
         pass
 
 a = Alfred()
-print(a.askQuestion('toss')
+print(a.askQuestion('toss'))

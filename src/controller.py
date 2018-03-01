@@ -1,4 +1,4 @@
-import modules.games
+from modules.games import Games
 
 def parse(query):
-    return modules.games, "toss"
+    return Games(), "toss"

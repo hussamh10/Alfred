@@ -1,39 +1,46 @@
 import sys
 import random
+from modules.module import Module
 
-def RPS(user):
-    bot = random.randint(0, 2)
-    choices = ['Rock', 'Paper', 'Scissors']
+class Games(Module):
+    def __init__(self):
+        super(Games, self).__init__("Games")
 
-    outcome = 'Tied'
+    def RPS(self, user):
+        bot = random.randint(0, 2)
+        choices = ['Rock', 'Paper', 'Scissors']
 
-    if(user == 0):
-        if(bot == 1):
-            outcome = 'Lost'
-        if(bot == 2):
-            outcome = 'Won'
+        outcome = 'Tied'
 
-    if(user == 1):
-        if(bot == 2):
-            outcome = 'Lost'
-        if(bot == 0):
-            outcome = 'Won'
+        if(user == 0):
+            if(bot == 1):
+                outcome = 'Lost'
+            if(bot == 2):
+                outcome = 'Won'
 
-    if(user == 2):
-        if(bot == 0):
-            outcome = 'Lost'
-        if(bot == 1):
-            outcome = 'Won'
+        if(user == 1):
+            if(bot == 2):
+                outcome = 'Lost'
+            if(bot == 0):
+                outcome = 'Won'
 
-    return 'Alfred chose ' + choices[bot] + '\n' + 'You chose ' + choices[user] + '\n' + 'You ' + outcome
+        if(user == 2):
+            if(bot == 0):
+                outcome = 'Lost'
+            if(bot == 1):
+                outcome = 'Won'
 
-def toss():
-    outcomes = ['Heads', 'Tails']
-    return random.choice(outcomes)
+        return 'Alfred chose ' + choices[bot] + '\n' + 'You chose ' + choices[user] + '\n' + 'You ' + outcome
 
-'''
-change this to another controller
-'''
-def getAnswer(q, alfred):
-    if 'toss' in q.lower():
-        return toss()
+    def toss(self):
+        outcomes = ['Heads', 'Tails']
+        return random.choice(outcomes)
+
+    def getAnswer(self, query, alfred):
+        query = query.lower().split()
+
+        if 'toss' in query[0]:
+            return self.toss()
+
+        if 'rps' in query[0]:
+            return self.RPS(query[1])

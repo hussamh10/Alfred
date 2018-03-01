@@ -1,10 +1,9 @@
-from abs import ABC, absctractmethod
+from abc import ABC, abstractmethod
 
 class Module(ABC):
-
     def __init__(self, name):
         self.name = name
 
-    @absctractmethod
+    @abstractmethod
     def getAnswer(self, query, alfred):
         pass
