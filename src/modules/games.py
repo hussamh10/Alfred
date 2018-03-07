@@ -39,8 +39,8 @@ class Games(Module):
     def getAnswer(self, query, alfred):
         query = query.lower().split()
 
-        if 'toss' in query[0]:
+        if 'toss' in query:
             return self.toss()
 
-        if 'rps' in query[0]:
-            return self.RPS(query[1])
+        if 'rps' in query:
+            return self.RPS(query.split()[1])

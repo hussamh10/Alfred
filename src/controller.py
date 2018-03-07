@@ -1,4 +1,16 @@
 from modules.games import Games
 
 def parse(query):
-    return Games(), "toss"
+    obj = None
+    q = None
+
+    if "toss" in query:
+        obj = Games()
+        q = "toss"
+
+    if "RPS" in query:
+        obj = Games()
+        q = "rps"
+
+
+    return obj, q
