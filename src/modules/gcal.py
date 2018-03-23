@@ -20,16 +20,17 @@ class Calendar(Module):
         if 'agenda' in query:
             return self.todayAgenda()
     
-
     def nextEvent(self):
-        #TODO
-        pass
+        #TOFIX
+        return self.getOutput(['gcalcli', 'agenda |', 'head', '-2 |', 'tail', '-1'])
 
     def weekAgenda(self):
-        #TODO
-        pass
+        return self.getOutput(['gcalcli', 'calw'])
 
     def todayAgenda(self):
-        output = check_output(['gcalcli', 'agenda'])
-        return output
+        return self.getOutput(['gcalcli', 'agenda'])
 
+    def getOutput(self, query):
+        output = check_output(query)
+        output = output.decode("utf-8") 
+        return output
